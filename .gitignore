@@ -1,0 +1,8 @@
+build
+dist
+.git
+.venv
+__pycache__
+*.egg*
+.vscode
+.python-version

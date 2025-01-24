@@ -1,0 +1,10 @@
+[project]
+name = "test-mult-run"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.1.8",
+    "psutil>=6.1.1",
+]
