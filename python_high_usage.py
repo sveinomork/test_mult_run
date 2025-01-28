@@ -36,25 +36,6 @@ def log_performance(func):
         end_cpu = psutil.cpu_percent(interval=None)
         end_memory = psutil.virtual_memory().used
 
-        logging.info(f"Execution Time: {end_time - start_time:.2f} seconds")
-        logging.info(f"CPU Usage: {end_cpu - start_cpu:.2f}%")
-        logging.info(f"Memory Usage: {end_memory - start_memory} bytes")
-
-        return result
-    return wrapper
-
-def log_performance2(func):
-    def wrapper(*args, **kwargs):
-        start_time = time.time()
-        start_cpu = psutil.cpu_percent(interval=None)
-        start_memory = psutil.virtual_memory().used
-
-        result = func(*args, **kwargs)
-
-        end_time = time.time()
-        end_cpu = psutil.cpu_percent(interval=None)
-        end_memory = psutil.virtual_memory().used
-
         logger.info(f"Execution Time: {end_time - start_time:.2f} seconds")
         logger.info(f"CPU Usage: {end_cpu - start_cpu:.2f}%")
         logger.info(f"Memory Usage: {end_memory - start_memory} bytes")
@@ -63,10 +44,12 @@ def log_performance2(func):
     return wrapper
 
 
-@log_performance2
-def consume_cpu_and_memory(memmory:int,processor:int,sleep:int):
+
+
+@log_performance
+def consume_cpu_and_memory(memory:int,processor:int,sleep:int):
     # Create a large list to consume memory
-    large_list = [i for i in range(memmory)]
+    large_list = [i for i in range(memory)]
     
     # Perform intensive computations to consume CPU
     result = 0
